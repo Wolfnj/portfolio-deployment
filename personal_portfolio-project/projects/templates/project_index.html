@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<head>
+  <title>Nathan Wolf Portfolio</title>
+
+</head>
+
+
+<h1>Projects</h1>
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1>Nathan Wolf</h1>
+    <p class="lead text-muted">My Development Portfolio</p>
+    <p>
+      <a href="mailto:nwolf1840@gmail.com" class="btn btn-primary my-2">Email Me!</a>
+      <a href="https://github.com/Wolfnj" class="btn btn-secondary my-2">My Github</a>
+    </p>
+
+    <p>
+      Here are some of the projects I have done and have worked on.
+      I plan to add to this site after I publish it to pythonanywhere.com.
+      If you have any questions, please email me. For some of these projects, I
+      don't think I can post my code on GitHub, but I can provide the code option
+      request. As of now, I have only uploaded a view projects, but plan on adding
+      more in the near future. 
+
+    </p>
+
+  </div>
+</section>
+
+
+<div class="row">
+{% for project in projects %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{{ project.image.url}}"></img>
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.short_description }}</p>
+                <a href="{% url 'project_detail' project.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
